@@ -6,18 +6,18 @@ import { entityGenerationParser } from "../parsers/entity-generation-parser.ts";
 export class EntityGenerationChain extends LLMChain {
   constructor() {
     const template = `
-  You will be provided an OpenAPI Specification, You are required to generate code to create database entities for TypeScript using TypeORM using the provided OpenAPI Specifications.
+  You will be provided an OpenAPI Specification, You are required to generate code to create database entities for {language} using {library} using the provided OpenAPI Specifications.
   
   Your Open API Specification will be
-  {OAS}
+  {schemas}
   
   You should also check the following points:
-  1. Identify the Schemas and map the datatypes to the appropriate typescript datatypes
+  1. Identify the Schemas and map the datatypes to the appropriate {language} datatypes
   2. Implement Relationships if Another entity is referred as type according to the cardinality.
   3. Add the necessary import statements for each file
-  
-  The output format should be in JSON format with an array of objects with a filename and the content of the file. For each file the Name of the class should be the name of the file in kebab case
-  Make sure the content property is a single line string with proper indentations and new line characters.
+  4. The output format should be in JSON format with an array of objects with a filename and the content of the file.
+  5. For each file the Name of the class should be the name of the file in the respective casing that the language abides by.
+  6. Make sure the content property is a single line string with proper indentations and new line characters.
   
   /n{formatInstructions}
       `;
@@ -28,7 +28,7 @@ export class EntityGenerationChain extends LLMChain {
     });
 
     const prompt = new PromptTemplate({
-      inputVariables: ["OAS"],
+      inputVariables: ["schemas", "language", "library"],
       template,
       partialVariables: {
         formatInstructions: entityGenerationParser.getFormatInstructions(),

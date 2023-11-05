@@ -10,7 +10,9 @@ async function main() {
 
   const chain = new EntityGenerationChain();
   const result = await chain.call({
-    OAS: content,
+    schemas: content,
+    language: "C#",
+    library: "Entity Framework",
   });
 
   const files = await entityGenerationParser.parse(result.text);

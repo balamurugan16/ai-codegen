@@ -1,5 +1,5 @@
 import { StructuredOutputParser } from "langchain/output_parsers";
-import { TypeOf, z } from "zod";
+import { z } from "zod";
 
 const schema = z
   .array(
