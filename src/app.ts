@@ -1,23 +1,10 @@
 import * as dotenv from "dotenv";
-import { EntityGenerationChain } from "./chains/entity-chain.ts";
-import { entityGenerationParser } from "./parsers/entity-generation-parser.ts";
-import { generateFiles, loadContent } from "./utils/file.utils.ts";
+import generateEntities from "./generate-entities.ts";
 
 dotenv.config();
 
 async function main() {
-  const content = await loadContent("./data/oas.yml");
-
-  const chain = new EntityGenerationChain();
-  const result = await chain.call({
-    schemas: content,
-    language: "C#",
-    library: "Entity Framework",
-  });
-
-  const files = await entityGenerationParser.parse(result.text);
-
-  await generateFiles(files);
+  generateEntities();
 }
 
 main();
