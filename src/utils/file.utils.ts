@@ -7,11 +7,10 @@ export const loadContent = async (location: string) => {
   return buffer.toString();
 };
 
-export const generateFiles = async (files: EntityGeneratorParserType) => {
-  for (let i = 0; i < files.length; i++) {
-    await writeFile(
-      path.join(process.cwd(), "output", files[i].filename),
-      files[i].content
-    );
-  }
+export const generateFile = async (
+  baseLocation: string,
+  fileName: string,
+  content: string
+) => {
+  await writeFile(path.join(process.cwd(), baseLocation, fileName), content);
 };
