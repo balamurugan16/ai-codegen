@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "node ./dist/app.ts",
+    "start": "node ./dist/app.js",
     "dev": "ts-node --esm ./src/app.ts",
     "clear": "rm -rf output/*",
     "generate:db": "ts-node --esm ./scripts/loadDatabase.ts"

@@ -1,7 +1,7 @@
 import { LLMChain } from "langchain/chains";
 import { OpenAI } from "langchain/llms/openai";
 import { PromptTemplate } from "langchain/prompts";
-import { entityGenerationParser } from "../parsers/entity-generation-parser.ts";
+import { entityGenerationParser } from "../parsers/entity-generation-parser.js";
 
 export class EntityGenerationChain extends LLMChain {
   constructor() {

@@ -1,6 +1,6 @@
-import { EntityGenerationChain } from "./chains/entity-chain.ts";
-import { entityGenerationParser } from "./parsers/entity-generation-parser.ts";
-import { generateFile, loadContent } from "./utils/file.utils.ts";
+import { EntityGenerationChain } from "./chains/entity-chain.js";
+import { entityGenerationParser } from "./parsers/entity-generation-parser.js";
+import { generateFile, loadContent } from "./utils/file.utils.js";
 
 async function generateEntities() {
   const content = await loadContent("./data/oas.yml");

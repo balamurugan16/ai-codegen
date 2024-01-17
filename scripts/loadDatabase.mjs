@@ -1,16 +1,12 @@
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { GithubRepoLoader } from "langchain/document_loaders/web/github";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-import { PoolConfig } from "pg";
-import {
-  PGVectorStore,
-  PGVectorStoreArgs,
-} from "langchain/vectorstores/pgvector";
+import { PGVectorStore } from "langchain/vectorstores/pgvector";
 import * as dotenv from "dotenv";
 
 async function main() {
   const loader = new GithubRepoLoader(
-    "https://github.com/BalamuruganD-Hexaware/reactTailwind",
+    "https://github.com/balamurugan16/reactTailwind",
     {
       branch: "master",
       recursive: true,
@@ -36,7 +32,7 @@ async function main() {
       user: "testuser",
       password: "testpwd",
       database: "vectordb",
-    } as PoolConfig,
+    },
     tableName: "reacttailwind",
     columns: {
       idColumnName: "id",
@@ -44,7 +40,7 @@ async function main() {
       contentColumnName: "content",
       metadataColumnName: "metadata",
     },
-  } as PGVectorStoreArgs;
+  };
 
   PGVectorStore.fromDocuments(texts, embeddings, config).then(() => {
     console.log("database loaded successfully");

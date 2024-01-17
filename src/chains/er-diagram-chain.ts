@@ -1,7 +1,7 @@
 import { LLMChain } from "langchain/chains";
 import { OpenAI } from "langchain/llms/openai";
 import { PromptTemplate } from "langchain/prompts";
-import { erDiagramParser } from "../parsers/er-diagram-parser.ts";
+import { erDiagramParser } from "../parsers/er-diagram-parser.js";
 
 export class ErDiagramChain extends LLMChain {
   constructor() {

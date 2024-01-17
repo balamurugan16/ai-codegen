@@ -6,7 +6,7 @@ import {
 import { PoolConfig } from "pg";
 import { RetrievalQAChain } from "langchain/chains";
 import { OpenAIChat } from "langchain/llms/openai";
-import { generateFile } from "./utils/file.utils.ts";
+import { generateFile } from "./utils/file.utils.js";
 
 async function reverseEngineering() {
   const embeddings = new OpenAIEmbeddings();

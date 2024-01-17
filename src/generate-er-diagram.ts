@@ -1,8 +1,6 @@
-import { EntityGenerationChain } from "./chains/entity-chain.ts";
-import { ErDiagramChain } from "./chains/er-diagram-chain.ts";
-import { entityGenerationParser } from "./parsers/entity-generation-parser.ts";
-import { erDiagramParser } from "./parsers/er-diagram-parser.ts";
-import { generateFile, loadContent } from "./utils/file.utils.ts";
+import { ErDiagramChain } from "./chains/er-diagram-chain.js";
+import { erDiagramParser } from "./parsers/er-diagram-parser.js";
+import { generateFile, loadContent } from "./utils/file.utils.js";
 
 async function generateErDiagram() {
   const content = await loadContent("./data/oas.yml");
