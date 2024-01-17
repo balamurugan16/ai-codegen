@@ -34,6 +34,8 @@ async function reverseEngineering() {
   const llm = new OpenAIChat();
   const chain = RetrievalQAChain.fromLLM(llm, db.asRetriever());
   const query = "can you explain me the Home.tsx file?";
+  const answer = await db.similaritySearch(query);
+  console.log(answer);
   const result = await chain.invoke({
     query,
   });

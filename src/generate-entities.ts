@@ -8,8 +8,8 @@ async function generateEntities() {
   const chain = new EntityGenerationChain();
   const result = await chain.call({
     schemas: content,
-    language: "C#",
-    library: "Entity Framework",
+    language: "TypeScript",
+    library: "TypeORM",
   });
 
   const files = await entityGenerationParser.parse(result.text);

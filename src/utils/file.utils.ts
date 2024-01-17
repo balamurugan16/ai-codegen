@@ -1,6 +1,5 @@
 import path from "path";
 import { readFile, writeFile } from "fs/promises";
-import { EntityGeneratorParserType } from "../parsers/entity-generation-parser.ts";
 
 export const loadContent = async (location: string) => {
   const buffer = await readFile(path.join(process.cwd(), location));
